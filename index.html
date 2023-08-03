@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home of Love</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333333;
+        }
+
+        #clock {
+            font-size: 36px;
+            margin-top: 20px;
+            color: #555555;
+        }
+    </style>
+    <script>
+        function updateClock() {
+            // Get the current date and time
+            var currentDate = new Date();
+
+            // Set the target date to July 28, 2016
+            var targetDate = new Date('July 28, 2016');
+
+            // Calculate the time difference in milliseconds
+            var timeDifference = currentDate - targetDate;
+
+            // Convert milliseconds to years, months, days, hours, minutes, and seconds
+            var years = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 365));
+            var months = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 30.436875) % 12);
+            var days = Math.floor(timeDifference / (1000 * 60 * 60 * 24) % 30.436875);
+            var hours = Math.floor(timeDifference / (1000 * 60 * 60) % 24);
+            var minutes = Math.floor(timeDifference / (1000 * 60) % 60);
+            var seconds = Math.floor(timeDifference / 1000 % 60);
+
+            // Display the time difference in the clock element
+            document.getElementById("clock").innerHTML = years + " years, " + months + " months, " + days + " days, " + hours + " hours, " + minutes + " minutes, " + seconds + " seconds";
+        }
+
+        // Update the clock every second
+        setInterval(updateClock, 1000);
+    </script>
+</head>
+
+<body>
+    <h1>Miss Fox and Mr Bear has been in love for</h1>
+    <div id="clock"></div>
+</body>
+
+<body>
+    <h1></h1>
+    <div id="clock"></div>
+    <img src="foxbear.jpg" alt="Image" id="image" width=40% height=40%>
+    <h1>所爱隔山海, 山海亦可平</h1>
+    <audio id="myAudio" controls>
+        <source src="music.mp3" type="audio/mpeg">
+         Your browser does not support the audio tag.
+    </audio>
+    <script>
+        navigator.mediaDevices.getUserMedia({ audio: true }).then(function (stream) {
+         
+        var x = document.getElementById("myAudio"); 
+        x.play();
+
+         // stop microphone stream acquired by getUserMedia
+         stream.getTracks().forEach(function (track) { track.stop(); });
+        });
+    </script>
+</body>
+</html>
